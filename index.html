@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditya Raghav - SAP ABAP Developer Resume</title>
+    <style>
+        /* Design System */
+        :root {
+            --color-primary: #1E3A8A;
+            --color-primary-light: #2563EB;
+            --color-accent: #F59E0B;
+            --color-accent-light: #FCD34D;
+            --color-text-dark: #1F2937;
+            --color-text-medium: #4B5563;
+            --color-text-light: #6B7280;
+            --color-bg-white: #FFFFFF;
+            --color-bg-light: #F9FAFB;
+            --color-bg-blue: #EFF6FF;
+            --color-border: #E5E7EB;
+            --color-success: #10B981;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--color-text-dark);
+            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+            padding: 20px;
+        }
+
+        .resume-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--color-bg-white);
+            box-shadow: var(--shadow-lg);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .resume-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: linear-gradient(180deg, var(--color-primary) 0%, #1E40AF 100%);
+            color: white;
+            padding: 40px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-20px, 20px); }
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 20px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: var(--shadow-lg), 0 0 20px rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg), 0 0 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .profile-initial {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, var(--color-accent) 0%, #EF4444 100%);
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 56px;
+            font-weight: bold;
+            margin: 0 auto 20px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .profile-initial:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg), 0 0 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .profile-name {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .profile-title {
+            font-size: 16px;
+            color: var(--color-accent-light);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-section {
+            margin-bottom: 35px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sidebar-section h2 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            color: var(--color-accent-light);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sidebar-section h2::before {
+            content: '';
+            width: 3px;
+            height: 16px;
+            background: var(--color-accent);
+            border-radius: 2px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            line-height: 1.5;
+            transition: var(--transition);
+            padding: 5px;
+            border-radius: var(--radius-sm);
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            font-size: 16px;
+            min-width: 20px;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-item a:hover {
+            color: var(--color-accent-light);
+        }
+
+        .quick-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: var(--radius-md);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-label {
+            color: var(--color-accent-light);
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 40px 50px;
+            background: var(--color-bg-white);
+        }
+
+        .section {
+            margin-bottom: 40px;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--color-accent);
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--color-primary-light);
+            transition: var(--transition);
+        }
+
+        .section-title:hover::after {
+            width: 100%;
+        }
+
+        .section-title:hover {
+            color: var(--color-primary-light);
+            transform: translateX(5px);
+        }
+
+        /* Summary */
+        .summary-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--color-text-medium);
+            background: var(--color-bg-blue);
+            padding: 20px;
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--color-primary);
+            transition: var(--transition);
+        }
+
+        .summary-text:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        /* Experience */
+        .experience-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 30px;
+            transition: var(--transition);
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            border: 3px solid var(--color-bg-white);
+            box-shadow: 0 0 0 2px var(--color-accent);
+            z-index: 2;
+            transition: var(--transition);
+        }
+
+        .experience-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 20px;
+            width: 2px;
+            height: calc(100% - 10px);
+            background: linear-gradient(180deg, var(--color-accent) 0%, transparent 100%);
+        }
+
+        .experience-item:last-child::after {
+            display: none;
+        }
+
+        .experience-item:hover::before {
+            transform: scale(1.5);
+            background: var(--color-primary);
+            box-shadow: 0 0 0 2px var(--color-primary), 0 0 10px var(--color-accent);
+        }
+
+        .experience-item:hover {
+            transform: translateX(5px);
+        }
+
+        .experience-header {
+            margin-bottom: 12px;
+        }
+
+        .experience-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 5px;
+        }
+
+        .experience-company {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-text-dark);
+            margin-bottom: 5px;
+        }
+
+        .experience-duration {
+            font-size: 14px;
+            color: var(--color-accent);
+            font-weight: 500;
+            display: inline-block;
+            background: rgba(245, 158, 11, 0.1);
+            padding: 4px 12px;
+            border-radius: var(--radius-sm);
+        }
+
+        .experience-achievements {
+            list-style: none;
+            margin-top: 12px;
+        }
+
+        .experience-achievements li {
+            padding-left: 20px;
+            margin-bottom: 8px;
+            position: relative;
+            color: var(--color-text-medium);
+            line-height: 1.6;
+        }
+
+        .experience-achievements li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-weight: bold;
+        }
+
+        /* Education */
+        .education-item {
+            background: var(--color-bg-light);
+            padding: 20px;
+            border-radius: var(--radius-md);
+            margin-bottom: 15px;
+            border-left: 4px solid var(--color-primary);
+            transition: var(--transition);
+        }
+
+        .education-item:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+            border-left-color: var(--color-accent);
+        }
+
+        .education-degree {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 5px;
+        }
+
+        .education-institution {
+            font-size: 14px;
+            color: var(--color-text-medium);
+            margin-bottom: 5px;
+        }
+
+        .education-year {
+            font-size: 13px;
+            color: var(--color-accent);
+            font-weight: 500;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: var(--color-bg-light);
+            padding: 20px;
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+            border: 1px solid var(--color-border);
+        }
+
+        .skill-category:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
+            border-color: var(--color-primary);
+        }
+
+        .skill-category h3 {
+            font-size: 14px;
+            color: var(--color-primary);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: white;
+            color: var(--color-text-dark);
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 13px;
+            border: 1px solid var(--color-border);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .skill-tag:hover {
+            background: var(--color-primary);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Projects */
+        .project-item {
+            background: var(--color-bg-blue);
+            padding: 20px;
+            border-radius: var(--radius-md);
+            margin-bottom: 15px;
+            transition: var(--transition);
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+
+        .project-item:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+            border-color: var(--color-primary);
+        }
+
+        .project-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .project-name::before {
+            content: '🚀';
+            font-size: 18px;
+        }
+
+        .project-description {
+            font-size: 14px;
+            color: var(--color-text-medium);
+            line-height: 1.6;
+        }
+
+        /* Certifications */
+        .cert-list {
+            list-style: none;
+        }
+
+        .cert-item {
+            background: white;
+            padding: 15px;
+            border-radius: var(--radius-md);
+            margin-bottom: 10px;
+            border-left: 4px solid var(--color-success);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cert-item::before {
+            content: '✓';
+            background: var(--color-success);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .cert-item:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(10px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .resume-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                padding: 30px 20px;
+            }
+
+            .main-content {
+                padding: 30px 20px;
+            }
+
+            .profile-photo,
+            .profile-initial {
+                width: 120px;
+                height: 120px;
+            }
+
+            .profile-initial {
+                font-size: 48px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .resume-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .sidebar {
+                background: var(--color-primary);
+            }
+
+            .profile-initial {
+                animation: none;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <div class="resume-layout">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="profile-section">
+                    <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/cc0acb8b-7f59-41d6-bf7e-86be936aee85" 
+                         alt="Aditya Raghav" 
+                         class="profile-photo"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="profile-initial" style="display: none;">AR</div>
+                    <h1 class="profile-name">ADITYA RAGHAV</h1>
+                    <p class="profile-title">SAP ABAP Developer</p>
+                </div>
+
+                <div class="sidebar-section">
+                    <h2>📞 Contact</h2>
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <span>Gurgaon, India</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📱</span>
+                        <a href="tel:+918923377426">+91 8923377426</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">✉️</span>
+                        <a href="mailto:raghavaditya419@gmail.com">raghavaditya419@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">💼</span>
+                        <a href="https://www.linkedin.com/in/aditya19112003/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">💻</span>
+                        <a href="https://github.com/iam19112003" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h2>📊 Quick Info</h2>
+                    <div class="quick-info">
+                        <div class="info-item">
+                            <span class="info-label">Location:</span>
+                            <span>Gurgaon, India</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Availability:</span>
+                            <span>Full-time</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Professional Summary -->
+                <section class="section">
+                    <h2 class="section-title">Professional Summary</h2>
+                    <p class="summary-text">
+                        BTech CSE student with hands-on experience in SAP ABAP development and enterprise software systems. 
+                        Currently working as SAP ABAP Trainee at Diverse Infotech Pvt Ltd, focused on developing robust business 
+                        applications. Skilled in ABAP programming, database management, and SAP module pool development. Strong 
+                        foundation in full-stack web development with proven ability to optimize application performance.
+                    </p>
+                </section>
+
+                <!-- Professional Experience -->
+                <section class="section">
+                    <h2 class="section-title">Professional Experience</h2>
+                    
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <h3 class="experience-title">SAP ABAP Trainee</h3>
+                            <p class="experience-company">Diverse Infotech Pvt Ltd</p>
+                            <span class="experience-duration">July 2025 – Present</span>
+                        </div>
+                        <ul class="experience-achievements">
+                            <li>Developing and maintaining ABAP programs for enterprise business applications</li>
+                            <li>Creating and optimizing reports using ALV grids and SmartForms</li>
+                            <li>Working with database tables and SQL queries to retrieve and process business data</li>
+                            <li>Participating in SAP module implementation and customization projects</li>
+                            <li>Collaborating with senior developers to understand enterprise software architecture</li>
+                            <li>Debugging and resolving technical issues in SAP systems</li>
+                        </ul>
+                    </div>
+
+
+                </section>
+
+                <!-- Education -->
+                <section class="section">
+                    <h2 class="section-title">Education</h2>
+                    
+                    <div class="education-item">
+                        <h3 class="education-degree">Bachelor of Engineering in Computer Science</h3>
+                        <p class="education-institution">GLA University, Mathura</p>
+                        <p class="education-year">June 2025</p>
+                    </div>
+
+                    <div class="education-item">
+                        <h3 class="education-degree">Intermediate</h3>
+                        <p class="education-institution">Jay Ambe International School, Bharuch</p>
+                        <p class="education-year">May 2021</p>
+                    </div>
+
+                    <div class="education-item">
+                        <h3 class="education-degree">High School</h3>
+                        <p class="education-institution">Jay Ambe International School, Bharuch</p>
+                        <p class="education-year">May 2019</p>
+                    </div>
+                </section>
+
+                <!-- Technical Skills -->
+                <section class="section">
+                    <h2 class="section-title">Technical Skills</h2>
+                    
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h3>SAP Technologies</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">ABAP Programming</span>
+                                <span class="skill-tag">ALV Reports</span>
+                                <span class="skill-tag">SmartForms</span>
+                                <span class="skill-tag">Module Pool</span>
+                                <span class="skill-tag">Database Mgmt</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3>Programming</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">ABAP</span>
+                                <span class="skill-tag">Java</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">SQL</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3>Web Technologies</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">HTML/CSS</span>
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">MongoDB</span>
+                                <span class="skill-tag">RESTful APIs</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3>Tools &amp; Platforms</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">SAP ERP</span>
+                                <span class="skill-tag">VS Code</span>
+                                <span class="skill-tag">MySQL</span>
+                                <span class="skill-tag">Git/GitHub</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3>Soft Skills</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Communication</span>
+                                <span class="skill-tag">Team Work</span>
+                                <span class="skill-tag">Problem Solving</span>
+                                <span class="skill-tag">Adaptability</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projects -->
+                <section class="section">
+                    <h2 class="section-title">Projects</h2>
+                    
+                    <div class="project-item">
+                        <h3 class="project-name">Rewordify – The Vocabulary Improver</h3>
+                        <p class="project-description">
+                            A website designed to teach one English word per day to improve vocabulary. Features include 
+                            daily word lessons and knowledge assessment of previously learned words.
+                        </p>
+                    </div>
+
+                    <div class="project-item">
+                        <h3 class="project-name">ChatBot</h3>
+                        <p class="project-description">
+                            Designed to simulate conversation with human users using natural language processing.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Certifications -->
+                <section class="section">
+                    <h2 class="section-title">Certifications &amp; Training</h2>
+                    
+                    <ul class="cert-list">
+                        <li class="cert-item">Completed Web Development course by Dr. Angela Yu (Udemy)</li>
+                        <li class="cert-item">Completed ANN, SCOUTS, and GUIDES Training</li>
+                        <li class="cert-item">Member of the Tech team at E-Cell, GLA University</li>
+                    </ul>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scroll behavior
+        document.querySelectorAll('.section-title').forEach(title => {
+            title.addEventListener('click', function() {
+                this.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 300);
+            });
+        });
+
+        // Add click effect to skill tags
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('click', function() {
+                this.style.background = 'var(--color-accent)';
+                this.style.color = 'white';
+                setTimeout(() => {
+                    this.style.background = '';
+                    this.style.color = '';
+                }, 500);
+            });
+        });
+
+        // Add ripple effect to project items
+        document.querySelectorAll('.project-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(30, 58, 138, 0.3)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s ease-out';
+                ripple.style.pointerEvents = 'none';
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Add CSS for ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Fallback for profile photo (show initials if image not loaded)
+        const photo = document.querySelector('.profile-photo');
+        const initials = document.querySelector('.profile-initial');
+        if (photo && initials) {
+            photo.onerror = function() {
+                this.style.display = 'none';
+                initials.style.display = 'flex';
+            };
+            photo.onclick = function() {
+                window.open(photo.src, '_blank');
+            };
+            initials.onclick = function() {
+                // On click, show modal or simply enlarge
+                initials.style.boxShadow = '0 0 30px var(--color-accent)';
+                setTimeout(() => {
+                    initials.style.boxShadow = '';
+                }, 350);
+            };
+        }
+        // Profile photo hover effect (cursor pointer added in css)
+
+        // Add print functionality
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+                e.preventDefault();
+                window.print();
+            }
+        });
+    </script>
+</body>
+</html>
